@@ -1,32 +1,45 @@
-import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/shoes")
 public class ShoeController {
-    
+
+    // This would ideally interact with the external supplier's API
+    @Autowired
+    private ExternalSupplierService externalSupplierService;
+
+    // Placeholder for handling gift card service
+    @Autowired
+    private GiftCardService giftCardService;
+
+    // Placeholder for handling order processing service
+    @Autowired
+    private OrderProcessingService orderProcessingService;
+
     @GetMapping("/{id}")
     public Shoe getShoeById(@PathVariable Long id) {
-        // Logic to fetch shoe details by ID from the external supplier
-        return fetchShoeDetailsFromExternalSupplier(id);
+        // Retrieve shoe details by ID from the external supplier
+        return externalSupplierService.fetchShoeDetails(id);
     }
 
     @PostMapping("/order")
     public String placeOrder(@RequestBody Shoe shoe) {
-        // Logic to process the order
-        return processOrder(shoe);
+        // Process the incoming order for a shoe
+        return orderProcessingService.processOrder(shoe);
     }
 
-    // Other endpoints for order processing, gift cards, etc.
-    
-    // Simulated methods to interact with an external supplier
-    private Shoe fetchShoeDetailsFromExternalSupplier(Long id) {
-        // Simulated API call to external supplier
-        // Return fetched shoe details
-        return new Shoe("Sample Model", "Sample Description", 99.99);
+    @PostMapping("/gift-card")
+    public String issueGiftCard(@RequestParam String email) {
+        // Issue a gift card to a customer using their email
+        String giftCard = giftCardService.issueGiftCard(email);
+        if (giftCard != null) {
+            return "Gift card sent to " + email;
+        } else {
+            return "Failed to issue a gift card.";
+        }
     }
 
-    private String processOrder(Shoe shoe) {
-        // Logic to process the order
-        return "Order placed for: " + shoe.getModel();
+    @PostMapping("/validate-coupon")
+    public boolean validateCoupon(@RequestParam String couponCode) {
+        // Placeholder for coupon validation logic
+        return couponCode.equals("SAMPLE123");
     }
 }
