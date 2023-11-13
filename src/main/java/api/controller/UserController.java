@@ -1,7 +1,10 @@
-import main.java.api.model.Product;
-import main.java.api.model.User;
-import main.java.service.ProductService;
-import main.java.service.UserService;
+package api.controller;
+
+
+import api.model.Product;
+import api.model.User;
+import service.ProductService;
+import service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
