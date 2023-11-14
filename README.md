@@ -6,28 +6,32 @@ Imelda Shoes-prosjektet: Kasse- og nettbutikkapplikasjon med REST-integrasjon.
 Dette repositoryet inneholder kildekoden for applikasjonen. Strukturert i mapper for front-end, back-end, og testing.
 
 ## Informasjon om template
+### Spring Boot og Spring Framework:
+- Prosjektet bruker Spring Boot, et rammeverk som forenkler oppsettet og konfigurasjonen av Spring-baserte applikasjoner.
 
-Spring Boot og Spring Framework:
+### RESTful Webtjeneste:
+- Applikasjonen er designet som en RESTful webtjeneste, og følger prinsippene om ressurser, URI og HTTP-metoder.
 
-Jeg valgte å bruke Spring Boot fordi det gir meg et raskt oppsett og automatiserer mye av konfigurasjonsarbeidet. Dette gjør utviklingen enklere og lar meg fokusere mer på selve funksjonaliteten.
-RESTful Webtjeneste:
+### Controller-klassen (`UserController`):
+- `UserController` er en del av Spring MVC-arkitekturen og fungerer som en kontroller for å håndtere HTTP-forespørsler.
+- Den er annotert med `@RestController` for å indikere at den behandler REST-forespørsler og gir JSON-respons.
 
-Jeg har designet applikasjonen min som en RESTful webtjeneste fordi det gir meg en enkel og standardisert måte å håndtere kommunikasjonen med klienter. Dette er spesielt nyttig for å bygge moderne webapplikasjoner.
-Controller-klassen (UserController):
+### Service-klasser (`UserService`, `ProductService`):
+- `UserService` og `ProductService` håndterer forretningslogikken for brukere og produkter, henholdsvis.
+- De er annotert med `@Service` og kan injiseres i andre komponenter.
 
-UserController er der jeg håndterer forespørsler fra klienter. Ved å bruke annotasjonen @RestController, kan jeg enkelt opprette API-endepunkter og sende JSON-respons. Dette gir meg en smidig måte å eksponere funksjonaliteten min.
-Service-klasser (UserService, ProductService):
+### Modellklasser (`User`, `Shoe`, `Orders`):
+- Modellklassene representerer objekter i systemet og implementerer `ProductInterface`.
 
-Jeg har opprettet UserService og ProductService for å isolere forretningslogikken min. Dette gjør koden min mer modulær og lettere å vedlikeholde. Ved å bruke @Service-annotasjonen, integreres de enkelt med resten av Spring-rammeverket.
-REST-prinsipper:
+### REST Endepunkter:
+- REST-endepunkter er definert ved hjelp av annotasjoner som `@GetMapping` og `@PostMapping`.
+- For eksempel svarer `/user/{id}` på GET-forespørsler for brukerinformasjon basert på brukerens ID.
 
-Jeg følger REST-prinsippene som statelessness og enhetlig grensesnitt. Dette gir meg en arkitektur som er enkel å forstå, skalerbar og som integreres godt med andre systemer.
+### Dependency Injection (`@Autowired`):
+- Spring bruker avhengighetsinjeksjon ved å bruke annotasjonen `@Autowired` for å injisere `UserService` og `ProductService` i `UserController`.
 
-## Prosjektoversikt
-
-Prosjektmalen består av en Java-basert webapplikasjon som spesifikt bruker Spring-rammeverket for å tilby et RESTful API. API-seksjonen inkluderer modellene (Product og User) og tjenestene (ProductService og UserService) for å håndtere forretningslogikk. I tillegg håndterer API-kontrolleren (UserController) HTTP-forespørsler og fungerer som et grensesnitt for operasjoner knyttet til brukere og produkter.
-
-`ProductService` håndterer innhenting av produkter fra en ekstern kilde (simulert gjennom den gitte koden), og `UserController` inkluderer endepunkter for å få tilgang til brukerinformasjon, hente produktinformasjon og sjekke produktstatus via REST-grensesnittet.
+### REST-prinsipper:
+- Prosjektet følger REST-prinsippene, som gir en enkel og skalerbar arkitektur for webtjenesten.
 
 ## Installasjon
 
