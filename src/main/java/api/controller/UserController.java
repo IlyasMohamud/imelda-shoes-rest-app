@@ -14,14 +14,24 @@ import java.util.List;
 
 @RestController
 public class UserController {
+    /**
+ * Kontrollerklassen `UserController` håndterer forespørsler knyttet til brukere og produkter.
+ * Den er merket med `@RestController` for å indikere at den håndterer HTTP-forespørsler og gir JSON-respons.
+ * Inkluderer metoder for å hente brukerinformasjon, hente produkter, sjekke produktstatus,
+ * og plassere ordre.
+ * Metoden `getUser` svarer på GET-forespørsler for brukerinformasjon basert på brukerens ID.
+ * Metoden `getProducts` svarer på GET-forespørsler for å hente tilgjengelige produkter.
+ * Metoden `checkProductStatus` svarer på GET-forespørsler for å sjekke produktstatus.
+ * Metoden `placeOrder` svarer på POST-forespørsler for å plassere ordre med produkter.
+ */
 
     private final UserService userService;
-    private final ProductService shoeService;
+    private final ProductService productService;
 
     @Autowired
-    public UserController(UserService userService, ProductService shoeService) {
+    public UserController(UserService userService, ProductService productService) {
         this.userService = userService;
-        this.shoeService = shoeService;
+        this.productService = productService;
     }
 
     @GetMapping("/user/{id}")
@@ -31,12 +41,12 @@ public class UserController {
 
     @GetMapping("/products")
     public List<Shoe> getProducts() {
-        return shoeService.fetchProducts();
+        return productService.fetchProducts();
     }
 
     @GetMapping("/checkProductStatus")
     public void checkProductStatus() {
-        shoeService.checkProductStatus();
+        productService.checkProductStatus();
     }
 
     // Add endpoint for placing orders

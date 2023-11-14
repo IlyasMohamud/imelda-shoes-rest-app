@@ -4,6 +4,13 @@ import java.util.List;
 
 
 public class User {
+    /**
+ * Klassen `User` representerer en bruker i systemet.
+ * Inkluderer egenskaper som ID, navn, alder, e-post, og en liste av ordrer.
+ * Konstruktøren initialiserer feltene ved opprettelse av et bruker-objekt.
+ * Metodene for å hente og sette verdier er også inkludert.
+ * Checkout-metoden utfører en sjekk og gir en virtuell gavekort hvis betingelsen er oppfylt.
+ */
 
     private int id;
     private String name;
@@ -57,6 +64,16 @@ public class User {
 
     public void setOrders(List<Orders<? extends ProductInterface>> orders) {
         this.orders = orders;
+    }
+
+    public void checkout() {
+        int orderCount = orders.size();
+        if (orderCount % 3 == 0) {
+            // Generate a virtual gift card
+            // Add logic to associate the gift card with the user
+            // and set an expiration date
+            System.out.println("Congratulations! You've earned a gift card of NOK 750. With code :add code from giftcard list");
+        }
     }
 
 }

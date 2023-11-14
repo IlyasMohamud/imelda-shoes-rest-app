@@ -1,6 +1,18 @@
 package api.model;
 
+
+
+
 public class Orders<T extends ProductInterface> {
+    /**
+ * Klassen `Orders` representerer en bestilling for et produkt.
+ * Den er parametrisert med en generisk type `T` som utvider `ProductInterface`.
+ * Felt inkluderer ordre-ID, et produkt av type `T` og kvantitet.
+ * Konstruktør tar ordre-ID, produkt og kvantitet som parametere.
+ * Getter- og setter-metoder er levert for hvert felt.
+ * ToString-metode returnerer en strengrepresentasjon av objektet for feilsøking.
+ */
+    
 
     private int orderId;
     private T product;

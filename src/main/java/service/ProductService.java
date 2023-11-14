@@ -1,5 +1,7 @@
 package service;
 
+
+
 import org.springframework.stereotype.Service;
 import api.model.Shoe;
 import java.util.ArrayList;
@@ -7,6 +9,16 @@ import java.util.List;
 
 @Service
 public class ProductService {
+    /**
+ * BRUKER DETTE BARE FOR Å VISE OPSETT BLIR FJERNET ETTERSOM AT ALL KOMMUNIKASJON OM PRODUCTER ER VIA EKSTERN LEVERANDØR
+ * Tjenesteklassen `ProductService` håndterer operasjoner knyttet til produkter.
+ * Den er merket med `@Service` for å indikere at den skal håndteres av Spring som en tjeneste.
+ * Inkluderer metoder for å hente produkter og sjekke produktstatus.
+ * Produktliste initialiseres som en plassholder for produkter fra leverandøren.
+ * Metoden `fetchProducts` simulerer henting av produkter fra en ekstern leverandør via en simulert REST API.
+ * Metoden `checkProductStatus` simulerer sjekk av produktstatus ved dagens slutt.
+ */
+    
     private List<Shoe> productList = new ArrayList<>(); // Placeholder for products from the supplier
 
     public List<Shoe> fetchProducts() {
