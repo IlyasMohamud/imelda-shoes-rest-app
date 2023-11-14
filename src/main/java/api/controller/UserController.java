@@ -1,39 +1,47 @@
 package api.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import api.model.Product;
+import api.model.Orders;
+import api.model.ProductInterface;
+import api.model.Shoe;
 import api.model.User;
 import service.ProductService;
 import service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 public class UserController {
+
     private final UserService userService;
-    private final ProductService productService;
+    private final ProductService shoeService;
 
     @Autowired
-    public UserController(UserService userService, ProductService productService) {
+    public UserController(UserService userService, ProductService shoeService) {
         this.userService = userService;
-        this.productService = productService;
+        this.shoeService = shoeService;
     }
 
-    @GetMapping("/user")
-    public User getUser(Integer id) {
+    @GetMapping("/user/{id}")
+    public User getUser(@PathVariable Integer id) {
         return userService.getUser(id).orElse(null);
     }
 
     @GetMapping("/products")
-    public List<Product> getProducts() {
-        return productService.fetchProducts();
+    public List<Shoe> getProducts() {
+        return shoeService.fetchProducts();
     }
 
     @GetMapping("/checkProductStatus")
     public void checkProductStatus() {
-        productService.checkProductStatus();
+        shoeService.checkProductStatus();
+    }
+
+    // Add endpoint for placing orders
+    @PostMapping("/placeOrder")
+    public void placeOrder(@RequestBody List<Orders<? extends ProductInterface>> orders) {
+        // Add logic to handle order placement
     }
 }
