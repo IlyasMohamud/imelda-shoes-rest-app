@@ -7,12 +7,21 @@ Dette repositoryet inneholder kildekoden for applikasjonen. Strukturert i mapper
 
 ## Informasjon om template
 
-- Product.java: Inneholder modellen som representerer et produkt med attributter og metoder for å håndtere produktinformasjon, inkludert funksjonalitet for statussporing.
-- User.java: Representerer modellen for brukere som samhandler med systemet og inneholder brukerrelatert informasjon.
-- ProductService.java: Håndterer innhenting av produkter fra en ekstern kilde (simulert) og sjekker produktstatus ved dagsslutt.
-- UserService.java: Gir funksjonalitet relatert til brukeradministrasjon og informasjonshenting.
-- UserController.java: Kontrollerer HTTP-forespørsler knyttet til brukere og produkter, og gir endepunkter for å hente brukerinformasjon, hente produkter og sjekke produktstatus. All kommunikasjon skjer via REST-grensesnitt.
-- application.properties: Konfigurasjonsfil for Spring Boot-applikasjonsinnstillinger.
+Spring Boot og Spring Framework:
+
+Jeg valgte å bruke Spring Boot fordi det gir meg et raskt oppsett og automatiserer mye av konfigurasjonsarbeidet. Dette gjør utviklingen enklere og lar meg fokusere mer på selve funksjonaliteten.
+RESTful Webtjeneste:
+
+Jeg har designet applikasjonen min som en RESTful webtjeneste fordi det gir meg en enkel og standardisert måte å håndtere kommunikasjonen med klienter. Dette er spesielt nyttig for å bygge moderne webapplikasjoner.
+Controller-klassen (UserController):
+
+UserController er der jeg håndterer forespørsler fra klienter. Ved å bruke annotasjonen @RestController, kan jeg enkelt opprette API-endepunkter og sende JSON-respons. Dette gir meg en smidig måte å eksponere funksjonaliteten min.
+Service-klasser (UserService, ProductService):
+
+Jeg har opprettet UserService og ProductService for å isolere forretningslogikken min. Dette gjør koden min mer modulær og lettere å vedlikeholde. Ved å bruke @Service-annotasjonen, integreres de enkelt med resten av Spring-rammeverket.
+REST-prinsipper:
+
+Jeg følger REST-prinsippene som statelessness og enhetlig grensesnitt. Dette gir meg en arkitektur som er enkel å forstå, skalerbar og som integreres godt med andre systemer.
 
 ## Prosjektoversikt
 
